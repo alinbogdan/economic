@@ -1,0 +1,26 @@
+{
+  "name": "economic-project",
+  "private": true,
+  "scripts": {
+    "e2e-staging": "protractor e2e/protractor.staging.conf.js",
+    "e2e-staging-teamcity": "protractor e2e/protractor.staging.conf.js --env=teamcity",
+    "e2e-production": "protractor e2e/protractor.production.conf.js",
+    "e2e-production-teamcity": "protractor e2e/protractor.production.conf.js --env=teamcity",
+    "e2e-staging-numbers": "protractor e2e/protractor.staging-numbers.conf.js",
+    "e2e-staging-numbers-teamcity": "protractor e2e/protractor.staging-numbers.conf.js --env=teamcity",
+    "economic": "protractor protractor.economic.conf.js",
+    "postinstall": "webdriver-manager update --standalone --versions.standalone=3.9.1",
+    "selenium": "webdriver-manager start --versions.standalone=3.9.1"
+  },
+  "version": "0.0.0",
+  "dependencies": {
+    "@types/node": "^14.6.2",
+    "moment": "^2.27.0",
+    "protractor": "^7.0.0",
+    "typescript": "^4.0.2"
+  },
+  "devDependencies": {
+    "@types/jasminewd2": "^2.0.8",
+    "ts-node": "^8.8.1"
+  }
+}
