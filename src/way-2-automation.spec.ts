@@ -3,6 +3,7 @@ import { HomePage } from "../pages/way-2-automation/home.page";
 import { MenuBarPage } from "../pages/way-2-automation/menu-bar.page";
 import { DatepickerPage } from "../pages/way-2-automation/datepicker.page";
 import * as moment from "moment";
+import { Helper } from "../utils/helper";
 
 browser.ignoreSynchronization = true;
 browser.driver.manage().window().maximize();
@@ -11,6 +12,7 @@ describe(`way2automation E2E smoke test`, function () {
   let homePage = new HomePage();
   let menuBarPage = new MenuBarPage();
   let datepickerPage = new DatepickerPage();
+  let utils = new Helper();
 
   const way2AutomationUrl =
     "http://way2automation.com/way2auto_jquery/index.php";
@@ -18,12 +20,14 @@ describe(`way2automation E2E smoke test`, function () {
   const datepickerUrl =
     "http://way2automation.com/way2auto_jquery/datepicker.php";
 
+  let randomRegistrationNumber = utils.getRandomNumber(100000, 1000000);
+
   const registrationName = "Marco Polo";
   const registrationPhone = "0123456789";
-  const registrationEmail = "marco.polo2001@gmail.com";
+  let registrationEmail = `marco.polo${randomRegistrationNumber}@gmail.com`;
   const registrationCountry = "Italy";
   const registrationCity = "Venice";
-  const registrationUsername = "marcovsky2001";
+  let registrationUsername = `marcovsky${randomRegistrationNumber}`;
   const registrationPassword = "marcovitz123!";
 
   let formatValueBeforeSelection;
@@ -51,6 +55,9 @@ describe(`way2automation E2E smoke test`, function () {
     await homePage.cityInput.sendKeys(registrationCity);
     await homePage.usernameInput.sendKeys(registrationUsername);
     await homePage.passwordInput.sendKeys(registrationPassword);
+
+    console.log(registrationEmail);
+    console.log(registrationUsername);
 
     await homePage.countrySelector.click();
 
